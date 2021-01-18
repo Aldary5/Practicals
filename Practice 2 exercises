@@ -1,0 +1,177 @@
+#include <iostream>
+#include <cmath>
+
+// // Ex 1
+// bool IsPointInCircle(int x, int y, int xc, int yc, int radc){
+//   if ((pow(sqrt(x-xc),2) + pow(sqrt(y-yc),2)) <= radc){
+//     return true ;
+//   } else {
+//     return false;
+//   }
+// }
+ 
+// int main() {
+//  std :: cout << IsPointInCircle( 3, 6, 3, 4, 5) << std :: endl;
+//  std :: cout << IsPointInCircle( 3, 4, 0, 0, 1) << std :: endl;
+// }
+
+// // Ex 2
+// void MovingBody(){
+//   int n;
+//   double v,  a,  xo, deltaT;
+//   std :: cout << " Enter the speed ";
+//   std :: cin >> v;
+//   while (v < 0){
+//     std :: cin >> v;
+// }
+//   std :: cout << " Enter the acceleration ";
+//   std :: cin >> a;
+//   while (a < 0){
+//     std :: cin >> a;
+// }
+//   std :: cout << " Enter the initial position ";
+//   std :: cin >> xo;
+//   std :: cout << " How many times you want to display the position of the moving body? ";
+//   std :: cin >> n;
+//   std :: cout << " How often (in seconds) you want to update the movement of the moving body? ";
+//   std :: cin >> deltaT;
+//   double t = 0;
+//   while (t <= n*deltaT ){
+//     double xt= xo + t*v + (1/2)*a*pow(t,2);
+//     std :: cout << "At time " << t << " the position is " << xt << std:: endl ;
+//     t += deltaT;
+//   }
+
+// }
+
+// int main() {
+//   MovingBody();
+// }
+
+// // Ex 3
+// int swap(int x, int y){
+//   int a;
+//   a=x;
+//   x = y;
+//   y = a;
+//   std :: cout << "x=" << x << std :: endl;
+//   std :: cout << "y=" << y << std :: endl;
+//   return 0;
+// }
+// int main(){
+//   swap (2,3);
+// }
+
+// // Ex 4
+// void FloydTriangle( int n){
+//   int c=1, ft = 0;
+//   while (c <= n){
+//     for (int i=0; i <c; i++){
+//       ft += 1;
+//       std :: cout << ft<< " " ;
+//     }
+//     std :: cout << std ::endl;
+//     c += 1;
+//   }
+// }
+// int main(){
+//   FloydTriangle(5);
+// }
+
+// // Ex 5
+// int Fibonacci(int n){
+//   if (n<0){
+//     std::cout << "n unvalid choose another n";
+//     std::cin >> n;
+//   }
+//   int a = 0, b=1, fb =0, i=2;
+//   while (i<= n){
+//     if (n == a){
+//       std :: cout << 0 << std :: endl;
+//       return 0;
+//     } else if (n==b){
+//       std :: cout << 1 << std :: endl;
+//       return 1;
+//     }else {
+//       fb = a + b;
+//       a = b;
+//       b = fb;
+//     }
+//     i +=1;
+//   }
+//   std :: cout << fb << std :: endl;
+//   return fb;
+// }
+// int main(){
+//   Fibonacci(30);
+// }
+
+// // Ex 6
+// static int x =0;
+// int FibonacciRec(int n){
+//   if (n<0){
+//     std::cout << "n unvalid choose another n";
+//     std::cin >> n;
+//   }
+//   if ( n == 0){
+//     return 0;
+//   }else if (n == 1) {
+//     return 1;
+//   }else {
+//     x+=1;
+//     return (FibonacciRec(n-1) + FibonacciRec(n-2));
+//   }
+// }
+// int main(){
+//   std :: cout << FibonacciRec(40) << std :: endl;
+//   std :: cout << "number of computations" << x << std :: endl;
+// }
+
+// // Ex 7
+// //1
+// static int nb1 = 0;
+// int RecursivePower1(int a, int n){
+//   if (n<0){
+//     std::cout << "n unvalid choose another n: ";
+//     std::cin >> n;
+//   }  
+//   if (n == 0){
+//     return 1;
+//   } else {
+//      nb1 +=1;
+//     return (RecursivePower1(a,n-1)*a);
+//   }
+
+// }
+
+// //2
+// static int nb2 =0;
+// int RecursivePower2(int a, int n){
+//   if (n<0){
+//     std::cout << "n unvalid choose another n";
+//     std::cin >> n;
+//   } 
+//   if (n == 0){
+//     return 1;
+//   } else if (n% 2 == 0){
+//     nb2 += 1;
+//     return (RecursivePower2(a,n/2)*RecursivePower2(a,n/2));
+//   }else {
+//     nb2 += 1;
+//     return (RecursivePower2(a,n/2)*RecursivePower2(a,n/2)*a);
+//   }
+// }
+// int main(){
+//   std::cout << RecursivePower1(2, -7) << std :: endl;
+//   std :: cout << "Number of recursive calls=" << nb1 << std :: endl;
+  
+//   std::cout << RecursivePower2(2, 7) << std :: endl;
+//   std :: cout << "Number of recursive calls=" << nb2 << std :: endl;
+// }
+//  // We clearly see for the first program than the relation between n and the number of recursive calls is n = number of recursive calls (nb1).
+//  // For the second program it is not the case. We see that the number of recursive calls follows a 'function en escalier' with steps 
+//  //looking like 1, 2-3, 4-7, 8-15 and so on. We notice that when n=1 then the number of recursive calls is 1. When n=2 or 3, 
+//  //the number of recrusive calls is 1+2=3. When n=4 to 7, the number of recursive calls is 1+2+4=7. When n=8 to 15, the number of recursive calls 
+//  //is equal to 1+2+4+8=15. We notice that the number of recursive calls is always equal to the highest number of the steps (1,3,7,15) and we add to 
+//  //the previous result the first number of the step. The function can be writen as the sum of 2^x, where here x is equal to the highest number of the step. 
+//  //So number of recursive calls = SUM(2^x).
