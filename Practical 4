@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// A utility function to print a polynomial 
+void print_poly(double *c, int n){
+  int i;
+  cout << c[0];
+  if(n>0)
+    cout << " + ";
+  for(i=1;i<n-1;i++)
+    cout << c[i] << "*x^" << i << " + ";
+  if(n>0)
+    cout << c[n-1] << "*x^" << i;
+  cout << endl;
+}
+
+// want to compute the polynomial value for a certain position x.
+double poly(double v[], int n, int x){
+  if (n==0){
+    return(0);
+  }
+
+  return (v[n-1]*pow(x,n-1)+poly(v,n-1,x));
+}
+
+// sum of 2 polynomials
+double *poly_sum(double *p1, int d1, double *p2, int d2, int &dr){
+  double *sum = new double[dr];
+  // initialise the 1st polynomial
+  for (int i=0; i<d1; i++){
+    sum[i] = p1[i];
+  }
+  // add the second polynomial to the 1st
+  for (int i=0; i<d2; i++){
+    sum[i] += p2[i];
+  }
+  return sum;
+}
+
+
+// product of 2 polynomials
+// p1[] represents coefficients of first polynomial 
+// p2[] represents coefficients of second polynomial 
+// m and n are sizes of A[] and B[] respectively 
+double * poly_multiply(double * p1, int d1, double * p2, int d2, int & dr){ 
+  double *product = new double[d1+d2-1]; 
+  
+   // Initialize the porduct polynomial 
+  for (int i = 0; i<d1+d2-1; i++){
+    product[i] = 0; 
+  } 
+   // Multiply two polynomials term by term 
+   // Take ever term of first polynomial 
+  for (int i=0; i<d1; i++) { 
+     // Multiply the current term of first polynomial 
+     // with every term of second polynomial. 
+    for (int j=0; j<d2; j++) 
+      product[i+j] += p1[i]*p2[j]; 
+   } 
+   return product; 
+}
+
+int main(){
+  // to test the poly function and make sure it returns the right number.
+  double v1[] = {1,1,1};
+  cout << "Value for x= 2 is " << poly(v1, 3, 2) << endl;
+
+  int n1=4;
+  double v2[] = {1,2,3,4};
+  double v3[] = {1,1,1};
+  double *sum = poly_sum(v2, 4, v3, 3, n1);
+  cout << "Sum polynomial is "; 
+  print_poly(sum,n1);
+  
+  int n2 = 4+3-1;
+  double *prod = poly_multiply(v2, 4, v3, 3,n2); 
+  cout << "Product polynomial is "; 
+  print_poly(prod, n2);
+
+}
