@@ -1,0 +1,160 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <list>
+using namespace std;
+
+// //Ex 1
+
+// class Date{
+//   public:
+//   int day, month, year;
+//   Date(int d=1, int m=1, int y=2000) {day=d, month=m, year=y;}
+
+//   int getDay(){ return day;}
+//   int getMonth(){ return month;}
+//   int getYear(){ return year;}
+
+//   void dateShow(){
+//     cout<< "Date: "<<day<< ", "<<month<< ", "<<year<<endl;
+//   }
+// };
+
+
+// class Blood: public Date{
+//   public:
+//   int systolic, diastolic;
+//   Date date;
+//   Blood(int s, int d, class Date dt) {systolic=s, diastolic =d, date=dt;}
+
+//   int getSyst(){
+//     return systolic;
+//   }
+//   int getDiast(){
+//     return diastolic;
+//   }
+
+//   void bloodShow(){
+//     cout << "Pressure record: systolic ="<< systolic<<", diastolic="  << diastolic << endl;
+//   }
+// };
+
+// class Patient{
+//   public: 
+//   string c1;
+//   vector <Blood> record;
+        
+//   Patient(string c) {c1 = c;}
+
+//   void addRecord(Blood b){
+//     record.push_back(b);
+//   }
+//   void printReport(){
+//     cout << "Report for patient "<< c1 << ":" <<endl;
+//     list <int> maxRecords;
+//     int maxSyst =0, nb =0, avg =0;
+//     for (int i=0; i< record.size(); i++ ){
+//       avg += record[i].getDiast();
+//       if (record[i].getSyst() > maxSyst) {
+//         maxSyst = record[i].getSyst();
+//         nb =i;
+//       }else if(record[i].getSyst() == maxSyst && record[i].getSyst() <= maxSyst) {
+//         maxRecords.push_back(maxSyst);
+//       }
+//     }
+//     maxRecords.push_back(maxSyst);
+//     avg /= record.size();
+//     if (maxSyst < 140){
+//       cout << "No measurment was too high" << endl;
+//     }
+    
+//     cout << "Average of diastolic values is " << avg << endl;
+//     cout << "Maximum systolic value is " << maxSyst << endl;
+//     cout << "Maximum record : ";
+//     for (auto v : maxRecords){
+//       cout << v << " ";
+//     }
+//     cout << endl;
+//   }
+  
+// };
+
+// int main() {
+//   Patient mary("Mary");
+//   mary.addRecord(Blood(94,61, Date(2,5,2013)));
+//   mary.addRecord(Blood(97,65, Date(3,5,2013)));
+//   mary.addRecord(Blood(144,99, Date(4,5,2013)));
+//   mary.addRecord(Blood(123,88, Date(5,5,2013)));
+//   mary.addRecord(Blood(177,110, Date(6,5,2013)));
+//   mary.addRecord(Blood(145,89, Date(7,5,2013)));
+//   mary.printReport();
+//   Patient john("John");
+//   john.addRecord(Blood(88,57, Date(15,5,2013)));
+//   john.addRecord(Blood(95,61, Date(16,5,2013)));
+//   john.addRecord(Blood(114,80, Date(17,5,2013)));
+//   john.addRecord(Blood(151,96, Date(18,5,2013)));
+//   john.addRecord(Blood(176,104, Date(19,5,2013)));
+//   john.addRecord(Blood(176,110, Date(20,5,2013)));
+//   john.printReport();
+// }
+
+// // Ex 2
+
+// class Stack{
+//   public:
+//   vector <int> stack;
+//   Stack() {
+//     for(int x1 = 0; x1 < 20; ++x1)
+//       stack[x1] = x1;
+//   }
+//   Stack(int n){ 
+//     for(int x = 0; x < n; ++x)
+//       stack[x] = x;
+//     }
+
+//   void push(int t){
+//     try{
+//       stack.push_back(t);
+//     }   
+//     catch( exception &e1) {
+//       cout << e1.what() <<endl;
+//     }
+//   }
+
+//   void pop(){
+//     if (stack.size() == 0){
+//       throw "EmptyStackException";
+//     }
+//     stack.pop_back(); 
+
+//   }
+
+//   void top(){
+//     if (stack.size() == stack.max_size()){
+//       throw "FullStackException";
+//     }
+//   stack.rbegin();
+//   }
+
+//   void print(){
+//     cout << "[ ";
+//     for (int i=0 ; i< stack.size()-1; i++){
+//       cout << stack[i]<< ", ";
+//     }
+//     cout << stack.back() << "]";
+//   }
+// };
+
+// int main() {
+//   Stack stack1;
+//   Stack stack2(10);
+//   stack1.print();
+//   stack2.print();
+//   stack1.pop();
+//   stack1.pop();
+//   stack1.pop();
+//   stack2.pop();
+//   stack1.print();
+//   stack1.push(1);
+//   stack2.print();
+// }
